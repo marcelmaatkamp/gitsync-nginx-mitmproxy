@@ -16,6 +16,7 @@ def request(flow: http.HTTPFlow) -> None:
 
     routers = utils.readFile(ROUTER_FILE)
     url = flow.request.url
+    ctx.log.info(url)
 
     if routers is not None:
         for patternURL, redirectURL in routers.items():
