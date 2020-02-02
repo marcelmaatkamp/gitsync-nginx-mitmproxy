@@ -1,5 +1,5 @@
 # mitmproxy with mitm-scripts
-https://github.com/KevCui/mitm-scripts
+Container with mitmproxy combined with https://github.com/KevCui/mitm-scripts 
 
 # installation
 ```
@@ -8,6 +8,15 @@ $ docker-compose up
 Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and install certificate in `~/Downloads/mitmproxy-ca-cert.pem`
 
 # Usage
+
+| Script | Usage |
+| -- | -- |
+| mitm-redirect-host.py | Script to redirect hosts requests |
+
+## mitm-redirect-host.py
+`rewrite-router.yaml`
+
+### Usage
 
 ## Example applications
 
@@ -37,14 +46,4 @@ mitmproxy_1  | https://registry.npmjs.org/babel-plugin-styled-components/-/babel
 ...
 ```
 
-## url rewrite
-Edit `etc/mitmproxy/redirect-router.yaml` and let mitmprocy rewrite the url
-```
-```
 
-# Extra information
-
-# mitmproxy
-https://github.com/KevCui/mitm-scripts
-
-## url rewrite
