@@ -2,10 +2,11 @@ version: '2'
 services:
 
  mitmproxy:
-  image: mitmproxy/mitmproxy:5.0.1
+  image: marcelmaatkamp/mitmproxy-mitm-scripts:latest
+  build: .
   command: ash -c 'cd /home/mitmproxy && mitmweb --web-iface 0.0.0.0 --web-port 8081 -s /home/mitmproxy/mitm-redirect-url.py'
   ports: 
    - 8080:8080
    - 8081:8081
   volumes:
-   - ./etc/mitmproxy/:/home/mitmproxy
+   - ./etc/mitm-scripts:/home/mitmproxy
