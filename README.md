@@ -4,8 +4,8 @@
 ```
 $ docker-compose up
 ```
-Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and install certificate.
-
+Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and install certificate in `~/Downloads/mitmproxy-ca-cert.pem`
+```
 # Usage
 
 ## example application
