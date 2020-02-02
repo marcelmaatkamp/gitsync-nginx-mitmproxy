@@ -26,8 +26,11 @@ This python script will rewrite requests according to the rules defined in `rewr
   -p 8080:8080 \
   -p 8081:8081 \
  marcelmaatkamp/mitmproxy-scripts \
-  mitmweb -s mitm-redirect-host.py  
-  
+  mitmweb \
+   --web-iface 0.0.0.0 \
+   --set termlog_verbosity=warn \
+   -s mitm-redirect-host.py
+ 
 Web server listening at http://127.0.0.1:8081/
 No web browser found. Please open a browser and point it to http://127.0.0.1:8081/
 Loading script mitm-redirect-host.py
