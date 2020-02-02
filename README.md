@@ -12,18 +12,18 @@ Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and insta
 https://github.com/strapi/strapi-examples/tree/master/login-react/react-login-front-end-app but could literally *any* application/library you would want to observe.
 
 ```
-# step 1: download application
+$ # step 1: download application
 $ git clone https://github.com/strapi/strapi-examples &&\
   cd strapi-examples/login-react/react-login-front-end-app
 
-# step 2: install and observe mitmproxy logs
+$ # step 2: install and observe mitmproxy logs
 $ http_proxy=http://localhost:8080 \
   https_proxy=http://localhost:8080 \
   NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
   npm install
 ```
 
-## mitmproxy logs
+## watch mitmproxy logs
 ```
 mitmproxy_1  | https://registry.npmjs.org/babel-plugin-transform-es2015-modules-commonjs
 mitmproxy_1  | https://registry.npmjs.org/add-asset-html-webpack-plugin
@@ -39,6 +39,10 @@ mitmproxy_1  | https://registry.npmjs.org/babel-plugin-transform-es2015-modules-
 mitmproxy_1  | https://registry.npmjs.org/add-asset-html-webpack-plugin/-/add-asset-html-webpack-plugin-2.0.1.tgz
 mitmproxy_1  | https://registry.npmjs.org/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.4.tgz
 ...
+```
+## now the fun begins
+Edit `etc/mitmproxy/redirect-router.yaml` and let mitmprocy rewrite the url
+```
 ```
 
 # Extra information
