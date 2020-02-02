@@ -1,4 +1,5 @@
 FROM mitmproxy/mitmproxy:5.0.1
-ADD https://github.com/KevCui/mitm-scripts /home/mitmproxy
+RUN apk update &&\
+    apk add git
+RUN git clone https://github.com/KevCui/mitm-scripts.git /home/mitmproxy/mitm-scripts
 WORKDIR /home/mitmproxy/mitm-scripts
-CMD ['mitmweb', '--web-iface','0.0.0.0','-s','/home/mitmproxy/mitm-redirect-url.py']
