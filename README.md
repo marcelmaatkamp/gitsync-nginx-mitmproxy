@@ -5,7 +5,7 @@ Container with mitmproxy combined with https://github.com/KevCui/mitm-scripts
 ```
 $ docker-compose up
 ```
-Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and install certificate in `~/Downloads/mitmproxy-ca-cert.pem`
+Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and download the appropiate certificate in `mitmproxy-ca-cert.pem`
 
 # Usage
 
