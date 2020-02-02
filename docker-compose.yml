@@ -4,7 +4,7 @@ services:
  mitmproxy:
   image: marcelmaatkamp/mitmproxy-mitm-scripts:latest
   build: .
-  command: ash -c 'cd /home/mitmproxy && mitmweb --web-iface 0.0.0.0 --web-port 8081 -s /home/mitmproxy/mitm-redirect-url.py'
+  # command: ash -c 'cd /home/mitmproxy && mitmweb --web-iface 0.0.0.0 --web-port 8081 -s /home/mitmproxy/mitm-redirect-url.py'
   ports: 
    - 8080:8080
    - 8081:8081
