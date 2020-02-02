@@ -2,10 +2,42 @@
 Container with mitmproxy combined with https://github.com/KevCui/mitm-scripts 
 
 # installation
+
+## mitmproxy
+
+Use just plain docker to start mitmproxy:
 ```
-$ docker-compose up
+% docker run --rm -ti \
+  -p 8080:8080 \
+ marcelmaatkamp/mitmproxy-scripts \
+  mitmproxy \
+   --listen-host 0.0.0.0 \
+   --listen-port 8080
 ```
+and watch the console 
+
+## mitmweb
+Use just plain docker to start mitmweb
+```
+$ docker run --rm -ti \
+  -p 8080:8080 \
+  -p 8081:8081 \
+ marcelmaatkamp/mitmproxy-scripts \
+  mitmweb \
+   --web-iface 0.0.0.0 
+```
+And goto http://localhost:8081 to view the web-interface.
+
+## browser
 Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and download the appropiate certificate `mitmproxy-ca-cert.pem`
+
+## cUrl
+Download the certificate with cUrl
+```
+$ http_proxy=http://localhost:8080 \
+  https_proxy=http://localhost:8080 \
+  curl -so ~/Downloads/mitmproxy-ca-cert.pem http://mitm.it/cert/pem
+```
 
 # Usage
 
@@ -51,6 +83,3 @@ $ http_proxy=http://localhost:8080 \
   NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
   npm install
 ```
-
-
-
