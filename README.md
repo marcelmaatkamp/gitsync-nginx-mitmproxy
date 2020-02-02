@@ -5,16 +5,37 @@ Container with mitmproxy combined with https://github.com/KevCui/mitm-scripts
 ```
 $ docker-compose up
 ```
-Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and install certificate in `~/Downloads/mitmproxy-ca-cert.pem`
+Set proxy in browser to http://localhost:8080 and goto http://mitm.it/ and download the appropiate certificate `mitmproxy-ca-cert.pem`
 
 # Usage
 
 | Script | Usage |
 | -- | -- |
-| mitm-redirect-host.py | Script to redirect hosts requests |
+| mitm-redirect-host.py | Script to redirect hosts requests according to rules defined in `rewrite-router.yaml` |
 
 ## mitm-redirect-host.py
-`rewrite-router.yaml`
+This python script will rewrite requests according to the rules defined in `rewrite-router.yaml`. See https://github.com/KevCui/mitm-scripts#mitm-redirect-host--mitm-redirect-url
+
+```
+# https://www.google.com/.*: example.com
+```
+
+### usage
+```
+% docker run --rm -ti \
+  -p 8080:8080 \
+  -p 8081:8081 \
+ marcelmaatkamp/mitmproxy-scripts \
+  mitmweb -s mitm-redirect-host.py  
+  
+Web server listening at http://127.0.0.1:8081/
+No web browser found. Please open a browser and point it to http://127.0.0.1:8081/
+Loading script mitm-redirect-host.py
+Proxy server listening at http://*:8080
+```
+
+Goto http://localhost:8081:
+<image>
 
 ### Usage
 
@@ -28,22 +49,5 @@ $ http_proxy=http://localhost:8080 \
   npm install
 ```
 
-## watch mitmproxy logs
-```
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-transform-es2015-modules-commonjs
-mitmproxy_1  | https://registry.npmjs.org/add-asset-html-webpack-plugin
-mitmproxy_1  | https://registry.npmjs.org/babel-cli
-mitmproxy_1  | https://registry.npmjs.org/babel-loader
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-react-intl
-mitmproxy_1  | https://registry.npmjs.org/babel-core
-mitmproxy_1  | https://registry.npmjs.org/babel-eslint
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-dynamic-import-node
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-styled-components
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-react-transform
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.24.1.tgz
-mitmproxy_1  | https://registry.npmjs.org/add-asset-html-webpack-plugin/-/add-asset-html-webpack-plugin-2.0.1.tgz
-mitmproxy_1  | https://registry.npmjs.org/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.4.tgz
-...
-```
 
 
