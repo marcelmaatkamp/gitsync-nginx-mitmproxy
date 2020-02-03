@@ -38,6 +38,15 @@ $ http_proxy=http://localhost:8080 \
   https_proxy=http://localhost:8080 \
   curl -so ~/Downloads/mitmproxy-ca-cert.pem http://mitm.it/cert/pem
 ```
+# example nodejs application
+Now its time to inspect the requests while building:
+```
+$ http_proxy=http://localhost:8080 \
+  https_proxy=http://localhost:8080 \
+  NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
+  npm install
+```
+
 Now it is time to do some nifty mitmproxy and python wizardry! :)
 
 # Usage
@@ -71,11 +80,6 @@ Loading script mitm-redirect-host.py
 Proxy server listening at http://*:8080
 ```
 
-### run example nodejs application
-Now its time to inspect the requests while building:
-```
-$ http_proxy=http://localhost:8080 \
-  https_proxy=http://localhost:8080 \
-  NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
-  npm install
-```
+# docker-compose 
+
+
