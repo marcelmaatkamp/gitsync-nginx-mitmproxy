@@ -38,8 +38,10 @@ $ http_proxy=http://localhost:8080 \
   https_proxy=http://localhost:8080 \
   curl -so ~/Downloads/mitmproxy-ca-cert.pem http://mitm.it/cert/pem
 ```
-# example nodejs application
-Now its time to inspect the requests while building:
+# inspect http traffic
+
+## nodejs
+Example on how to inspect nodejs
 ```
 $ http_proxy=http://localhost:8080 \
   https_proxy=http://localhost:8080 \
@@ -47,23 +49,34 @@ $ http_proxy=http://localhost:8080 \
   npm install
 ```
 
-Now it is time to do some nifty mitmproxy and python wizardry! :)
+## python
 
-# Usage
+## java
+
+## android
+Just set proxy in your Wifi settings by holding down the network name and setting the proxy address.
+
+# mitm-scrips
+The previous examples where just plain simple mitmproxy examples, but now it is time to do some nifty mitmproxy and python wizardry. Because mitmproxy provides a python interface with request and response objects where we can intercept and manipulate the request and reponse we can do all kinds of cool stuff. 
+
+One of the more useful examples would be to intercept and rewrite the requests to resources which are no longer available. 
+
+## Usage
+
 https://github.com/KevCui/mitm-scripts contains python example scripts. One of the more useful scripts is the `mitm-redirect-host.py` and `mitm-redirect-url.py`. Lets say a (node/java/whatever) library contains a hardcoded reference to another library but that one is deleted/moved/temporary not available and you don't have the source code at hand. A very quick fix would be to redirect just that request to your own webserver.
 
 | Script | Usage |
 | -- | -- |
 | mitm-redirect-host.py | Script to redirect hosts requests according to rules defined in `rewrite-router.yaml` |
 
-## mitm-redirect-host.py
+### mitm-redirect-host.py
 This python script will rewrite requests according to the rules defined in `rewrite-router.yaml`. See https://github.com/KevCui/mitm-scripts#mitm-redirect-host--mitm-redirect-url
 
 ```
 # https://www.google.com/.*: example.com
 ```
 
-### start mitm-redirect-host.py
+#### start mitm-redirect-host.py
 ```
 % docker run --rm -ti \
   -p 8080:8080 \
@@ -79,7 +92,8 @@ No web browser found. Please open a browser and point it to http://127.0.0.1:808
 Loading script mitm-redirect-host.py
 Proxy server listening at http://*:8080
 ```
+###
 
-# docker-compose 
+### docker-compose 
 
 
