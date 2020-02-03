@@ -12,3 +12,8 @@ services:
    - 8081:8081
   volumes:
    - ./etc/mitm-scripts:/home/mitmproxy
+
+ nginx:
+  image: nginx:1.17.8
+  volumes:
+   - ./etc/nginx:/usr/share/nginx/html
