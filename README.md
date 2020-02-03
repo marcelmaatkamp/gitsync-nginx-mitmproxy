@@ -92,8 +92,20 @@ No web browser found. Please open a browser and point it to http://127.0.0.1:808
 Loading script mitm-redirect-host.py
 Proxy server listening at http://*:8080
 ```
-###
+### Redirect
+Redirect google.com -> example.com
 
 ### docker-compose 
+```
+% http_proxy=http://localhost:8080 \
+  https_proxy=http://localhost:8080 \
+  curl -so ~/Downloads/mitmproxy-ca-cert.pem http://mitm.it/cert/pem
+  
+% http_proxy=http://localhost:8080 \
+  https_proxy=http://localhost:8080 \
+  curl \
+   --cacert ~/Downloads/mitmproxy-ca-cert.pem \
+   https://www.google.com
+```
 
 
