@@ -6,12 +6,12 @@ services:
   build: .
   stdin_open: true
   tty: true
-  # command: ash -c 'cd /home/mitmproxy && mitmweb --web-iface 0.0.0.0 --web-port 8081 -s /home/mitmproxy/mitm-redirect-url.py'
+  command: ash -c 'mitmweb --web-iface 0.0.0.0 --set termlog_verbosity=warn -s mitm-redirect-host.py'
   ports: 
    - 8080:8080
    - 8081:8081
   volumes:
-   - ./etc/mitm-scripts:/home/mitmproxy
+   - ./etc/mitm-scripts/redirect-router.yaml:/home/mitmproxy/mitm-scripts/redirect-router.yaml
 
  nginx:
   image: nginx:1.17.8
