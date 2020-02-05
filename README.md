@@ -52,7 +52,7 @@ $ http_proxy=http://localhost:8080 \
   NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
   npm install
 ```
-[mitmproxy-npm](documentation/images/mitmproxy-npm.png)
+![mitmproxy-npm](documentation/images/mitmproxy-npm.png)
 
 ## python
 
