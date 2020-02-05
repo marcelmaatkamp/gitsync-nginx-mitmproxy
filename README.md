@@ -45,9 +45,14 @@ Example on how to inspect nodejs
 ```
 $ http_proxy=http://localhost:8080 \
   https_proxy=http://localhost:8080 \
+  curl -so ~/Downloads/mitmproxy-ca-cert.pem http://mitm.it/cert/pem
+
+$ http_proxy=http://localhost:8080 \
+  https_proxy=http://localhost:8080 \
   NODE_EXTRA_CA_CERTS=~/Downloads/mitmproxy-ca-cert.pem \
   npm install
 ```
+[mitmproxy-npm](documentation/images/mitmproxy-npm.png)
 
 ## python
 
